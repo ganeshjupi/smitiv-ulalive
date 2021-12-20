@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/custom-style.css" />
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/custom-user.css" />
+
+    <!-- Bootstrap Style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Google Font Style -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <title>Ulalive</title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- Bootstrap JS Starts here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS Ends here -->
+    <script type="text/javascript">
+        // $(document).ready(function () {
+        //   $(".visibility-icon").click(function () {
+        //     $(this).toggleClass("on");
+        //     if ($(this).hasClass("on")) {
+        //       $(this).siblings("input").attr("type", "text");
+        //     } else {
+        //       $(this).siblings("input").attr("type", "password");
+        //     }
+        //   });
+        // });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".left-menu .has-sub").click(function() {
+                $(".left-menu li a").removeClass("active");
+                $(this).addClass("active");
+                $(".left-menu li a:not(.active)").siblings(".sub-menu").slideUp();
+                $(this).siblings(".sub-menu").slideToggle();
+            });
+            $(".left-menu .sub-menu li a").click(function() {
+                $(".left-menu .sub-menu li a").removeClass("active");
+                $(this).addClass("active");
+            });
+            $(".menu-btn").click(function() {
+                $("body").addClass("overflow-hidden");
+                $(".left-wrap").addClass("show");
+            });
+            $(".mob-menu-overlay").click(function() {
+                $(".left-wrap").removeClass("show");
+                $("body").removeClass("overflow-hidden");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            const minus = $(".quantity__minus");
+            const plus = $(".quantity__plus");
+            const input = $(".quantity__input");
+            minus.click(function(e) {
+                e.preventDefault();
+                var value = input.val();
+                if (value > 1) {
+                    value--;
+                }
+                input.val(value);
+            });
+
+            plus.click(function(e) {
+                e.preventDefault();
+                var value = input.val();
+                value++;
+                input.val(value);
+            });
+        });
+    </script>
+
+    <script>
+        $(".nav-tabs li.nav-item a.nav-link").click(function() {
+            $(".nav-tabs li.nav-item a.nav-link").removeClass('active');
+        });
+    </script>
+
+    <script>
+        const showThumbnail = (btnHasClicked) => {
+            const imgTag = btnHasClicked.parentNode.querySelector('.img-thumbnail');
+            const file = btnHasClicked.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                imgTag.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                imgTag.src = "";
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.nav li').click(function(e) {
+
+                $('.nav li').removeClass('active');
+
+                var $this = $(this);
+                if (!$this.hasClass('active')) {
+                    $this.addClass('active');
+                }
+                //e.preventDefault();
+            });
+        });
+    </script>
+    <script>
+        const toggles = document.querySelectorAll(".faq-toggle")
+        toggles.forEach(toggle => {
+            toggle.addEventListener("click", () => {
+                toggle.parentNode.classList.toggle("active")
+            })
+        })
+    </script>
+</body>
+
+</html>
